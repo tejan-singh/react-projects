@@ -30,9 +30,6 @@ function App() {
     setTours(newTours)
   }
 
-  const clearScreen = function(){
-    setTours([])
-  }
 
   if(isLoading){
     return <>
