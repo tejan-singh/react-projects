@@ -9,7 +9,7 @@ const Tours = ({ tours, removeTour }) => {
       </div>
       <div>
         {tours.map((tour) => {
-          return <Tour key={tour.id} {...tour} removeTour={removeTour} />;
+          return <Tours key={tour.id} {...tour} removeTour={removeTour} />;
         })}
       </div>
     </section>
