@@ -13,7 +13,6 @@ function App() {
     try {
       let colors = new Values(color).all(10)
       setList(colors)
-      console.log(list)
     } catch (error) {
       setError(true)
       console.log(error)

@@ -12,7 +12,7 @@ const SingleColor = ({rgb, weight, index, hexCode}) => {
 
   // set background value of each color according to the rgb value got from bcg
   return (
-    <article className='color' style={{backgroundColor: `rgb(${bcg})`}}>
+    <article className={`color ${index > 10 && 'color-light'}`} style={{backgroundColor: `rgb(${bcg})`}}>
       <p className='percent-value'>{weight}%</p>
       <p className='color-value'>{hexCode}</p>
   </article>
