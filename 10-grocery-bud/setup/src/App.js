@@ -18,7 +18,7 @@ function App() {
     if(!input){
       setAlert({show:true, msg:"please enter value", type: "danger"})
     }
-    else if(isEditing){
+    else if(input && isEditing){
       setItems(items.map((eachItem) => {
         if (eachItem.id === editId){
           return {...eachItem, name:input}
