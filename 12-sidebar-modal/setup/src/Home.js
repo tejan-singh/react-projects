@@ -3,13 +3,13 @@ import { FaBars } from 'react-icons/fa'
 import { AppContext } from './context'
 
 const Home = () => {
-  const data = useContext(AppContext)
-  console.log(data)
+  const {openModel, openSideBar} = useContext(AppContext)
+  
   return <main>
-    <button className="sidebar-toggle">
+    <button className="sidebar-toggle" onClick={openSideBar}>
       <FaBars/>
     </button>
-    <button className="btn">show model</button>
+    <button className="btn" onClick={openModel}>show model</button>
   </main>
 }
 
