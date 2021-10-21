@@ -5,7 +5,17 @@ import sublinks from './data'
 import { AppContext } from './context'
 
 const Navbar = () => {
-  const {openSideBar} = useContext(AppContext)
+  const {openSideBar,openSubmenu} = useContext(AppContext)
+
+  const showSubMenu = (e) => {
+    const text = e.target.textContent
+    const tempBtn = e.target.getBoundingClientRect()
+    // console.log(tempBtn)
+    const center = (tempBtn.left + tempBtn.right) / 2
+    const bottom = tempBtn.bottom - 3
+
+    openSubmenu(text, {center, bottom})
+  }
 
   return <nav className='nav'>
     <div className='nav-center'>
@@ -18,7 +28,7 @@ const Navbar = () => {
 
       <ul className='nav-links'>
         {sublinks.map((link)=>{return (
-          <li><button className="link-btn">{link.page}</button></li>
+          <li><button className="link-btn" onMouseOver={showSubMenu}>{link.page}</button></li>
         )})}
       </ul>
       <button className='btn signin-btn'>Sign in</button>

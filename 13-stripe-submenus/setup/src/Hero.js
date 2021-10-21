@@ -1,8 +1,11 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import phoneImg from './images/phone.svg'
+import { AppContext } from './context'
 
 const Hero = () => {
-  return <section className='hero'>
+  const {closeSubmenu} = useContext(AppContext)
+
+  return <section className='hero' onMouseOver={closeSubmenu}>
     <div className='hero-center'>
       <article className='hero-info'>
         <h1>Payments infrastructure for the internet</h1>
