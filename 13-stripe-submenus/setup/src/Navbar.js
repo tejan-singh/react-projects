@@ -5,7 +5,7 @@ import sublinks from './data'
 import { AppContext } from './context'
 
 const Navbar = () => {
-  const {openSideBar,openSubmenu} = useContext(AppContext)
+  const {closeSubmenu, openSubmenu, openSideBar} = useContext(AppContext)
 
   const showSubMenu = (e) => {
     const text = e.target.textContent
@@ -17,7 +17,13 @@ const Navbar = () => {
     openSubmenu(text, {center, bottom})
   }
 
-  return <nav className='nav'>
+  const handleSubmenu = (e) => {
+  // if className is not "link-btn" for any component then only we will use closeSubmenu
+    if(!e.target.classList.contains('link-btn')){
+      closeSubmenu()
+    }
+  }
+  return <nav className='nav' onMouseOver={handleSubmenu}>
     <div className='nav-center'>
       <div className='nav-header'>
         <img className='nav-logo' src={logo}/>
