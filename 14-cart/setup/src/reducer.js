@@ -9,6 +9,27 @@ const reducer = (state, action) => {
         return {...state, cart:newList}
     }
 
+    if(action.type === 'INCREASE'){
+        let newCart = state.cart.map((cartItem) => {
+            if (cartItem.id === action.payload){
+                return {...cartItem, amount: cartItem.amount + 1}
+            }
+
+            return cartItem
+        })
+        return {...state, cart:newCart}
+    }
+
+    if(action.type === 'DECREASE'){
+        let newCart = state.cart.map((cartItem) => {
+            if (cartItem.id === action.payload){
+                return {...cartItem, amount: cartItem.amount - 1}
+            }
+            return cartItem
+        })
+        return {...state, cart:newCart}
+    }
+
     return state
 }
 
