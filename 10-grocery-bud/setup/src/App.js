@@ -2,12 +2,33 @@ import React, { useState, useEffect } from "react";
 import List from "./List";
 import Alert from "./Alert";
 
+const getLocalStorage = () => {
+  let list = localStorage.getItem('list')
+
+  if(list){
+    return (JSON.parse(localStorage.getItem('list')))
+  }
+  else{
+    return [];
+  }
+}
+
 function App() {
   const [input, setInput] = useState("");
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(getLocalStorage());
   const [isEditing, setIsEditing] = useState(false);
   const [editId, setEditId] = useState(null);
   const [alert, setAlert] = useState({show:false, msg:"", type: ""})
+
+  useEffect(() => {
+    // takes key value pair as parameter and only stores string values
+    // setItem is a function used to store items in localstorage
+    // list is the key provided to store json
+    localStorage.setItem('list', JSON.stringify(items))
+
+  }, [items])
+
+
 
   const handleChange = (e) => {
     setInput(e.target.value);
